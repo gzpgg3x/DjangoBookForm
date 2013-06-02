@@ -60,10 +60,13 @@
 #         {'errors': errors})
 
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import *
+# from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from books.forms import ContactForm
 from books.models import Book
+
+from django.shortcuts import render
 
 def search(request):
     errors = []
@@ -157,3 +160,15 @@ def contact(request):
             initial={'subject': 'I love your site!'}
         )
     return render_to_response('contact_form.html', {'form': form})
+
+def search_form(request):
+    # return render_to_response('search_form.html')
+    return render(request, 'search_form.html') 
+
+def search(request):
+    if 'q' in request.GET:
+        message = 'You searched for: %r' % request.GET['q']
+        print message
+    else:
+        message = 'You submitted an empty form.'
+    return HttpResponse(message) 

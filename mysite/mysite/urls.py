@@ -39,13 +39,14 @@ from django.conf.urls import *
 from books import views
 
 urlpatterns = patterns('',
-    # (r'^hello/$', hello),
+    # (r'^hello/$', views.hello),
     # (r'^time/$', current_datetime),
     # (r'^time/plus/(\d{1,2})/$', hours_ahead),
     (r'^admin/', include(admin.site.urls)),
     #(r'^search-form/$', views.search_form),
     (r'^search/$', views.search),
     (r'^contact/$', views.contact),
+    url(r'^search-form/$', views.search_form),
 )
 
 

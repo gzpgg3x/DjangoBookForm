@@ -61,6 +61,7 @@ import datetime
 
 
 from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 def hello(request):
     return HttpResponse("Hello world")
@@ -80,4 +81,5 @@ def hours_ahead(request, offset):
     return HttpResponse(html)
 
 def search_form(request):
-    return render_to_response('search_form.html')
+    # return render_to_response('search_form.html')
+    return render(request, 'search_form.html')    
